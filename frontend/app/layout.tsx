@@ -7,17 +7,17 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-displ
 
 export const metadata: Metadata = {
   title: 'Throvic | Knowledge Graph Explorer',
-  description: 'Dive into an infinite, interactive knowledge graph. Explore complex topics, discover hidden connections, and visualize the universe of information.',
+  description: 'Stop searching. Start discovering. Click to dive down the rabbit hole and generate interactive mind maps on any topic in seconds.',
   keywords: ['knowledge graph', 'AI', 'learning', 'node graph', 'interactive data', 'education technology', 'research tool'],
   authors: [{ name: 'Yash Trivedi', url: 'https://yash635644.github.io/yash-portfolio/' }],
   openGraph: {
-    title: 'Throvic | Interactive Knowledge Graph',
-    description: 'Explore complex topics and discover hidden connections with a dynamic, AI-powered physics engine.',
+    title: 'Throvic | The Infinite Knowledge Graph',
+    description: 'Enter a concept. Watch the universe of knowledge unfold before your eyes. Experience the most dynamic learning engine ever built.',
     url: 'https://throvic.pages.dev',
     siteName: 'Throvic',
     images: [
       {
-        url: 'https://throvic.pages.dev/demo.webp',
+        url: 'https://throvic.pages.dev/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Throvic Knowledge Graph Explorer',
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Throvic | Knowledge Graph Explorer',
-    description: 'Dive into an infinite, interactive knowledge graph.',
-    images: ['https://throvic.pages.dev/demo.webp'],
+    title: 'Throvic | The Infinite Knowledge Graph',
+    description: 'Stop searching. Start discovering. Click to dive down the throvic.',
+    images: ['https://throvic.pages.dev/og-image.png'],
   },
   robots: {
     index: true,
