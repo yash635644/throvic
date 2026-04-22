@@ -23,7 +23,7 @@ export default function LandingPage() {
   const faqs = [
     {
       q: "What powers Throvic?",
-      a: "Throvic is powered by the AI model, which processes complex topics and structures them into a dynamic, traversable knowledge graph."
+      a: "Throvic is powered by state-of-the-art AI language models, which process complex topics and structure them into a dynamic, traversable knowledge graph."
     },
     {
       q: "Is the knowledge graph infinite?",
