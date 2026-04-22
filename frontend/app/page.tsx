@@ -142,7 +142,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex flex-col items-center sm:flex-row gap-4 mb-20 md:mb-32"
+            className="flex flex-col items-center sm:flex-row gap-4 mb-20 md:mb-32 justify-center w-full"
           >
             <button 
               onClick={navigateToExplore}
