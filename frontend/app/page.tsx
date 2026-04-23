@@ -1,15 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowRight, Brain, Zap, GitBranch, MessageSquare, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, Brain, Zap, GitBranch, MessageSquare, ChevronDown, GraduationCap, Microscope, PenTool } from 'lucide-react';
 
 export default function LandingPage() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [pulseCount, setPulseCount] = useState(14302);
   const [isEntering, setIsEntering] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPulseCount(prev => prev + Math.floor(Math.random() * 3) + 1);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -150,6 +160,15 @@ export default function LandingPage() {
             >
               Explore Graph <ArrowRight size={20} />
             </button>
+
+            {/* Live Global Pulse Counter */}
+            <div className="mt-4 flex items-center justify-center gap-3 text-white/50 text-sm font-medium tracking-wide">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5DCAA5] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#5DCAA5]"></span>
+              </span>
+              <span>Over <strong className="text-white/90 tabular-nums">{pulseCount.toLocaleString()}</strong> Concepts Explored Worldwide</span>
+            </div>
           </motion.div>
 
           <motion.div
@@ -223,6 +242,64 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Infinite Traversal</h3>
               <p className="text-white/60 leading-relaxed">Click any node to dynamically generate new branches. Dive endlessly down the rabbit hole.</p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Use Cases Section */}
+        <section className="py-20 max-w-6xl mx-auto border-t border-white/5 mt-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-display">Who builds with Throvic?</h2>
+            <p className="text-lg text-white/50 max-w-2xl mx-auto">Designed for professionals, academics, and creators who need to visualize deep data effortlessly.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="group p-8 rounded-3xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5 hover:border-[#7F77DD]/30 transition-all"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#7F77DD]/10 flex items-center justify-center text-[#7F77DD] mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                <GraduationCap size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Students & Learners</h3>
+              <p className="text-white/60 leading-relaxed">Break down dense syllabuses. Visually map out historical events, complex biology, or physics theorems to accelerate comprehension.</p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="group p-8 rounded-3xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5 hover:border-[#5DCAA5]/30 transition-all"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#5DCAA5]/10 flex items-center justify-center text-[#5DCAA5] mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                <Microscope size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Deep Researchers</h3>
+              <p className="text-white/60 leading-relaxed">Instantly discover hidden citations and cross-disciplinary overlaps. Reveal connections that standard text-based searches miss entirely.</p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="group p-8 rounded-3xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5 hover:border-[#EF9F27]/30 transition-all"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#EF9F27]/10 flex items-center justify-center text-[#EF9F27] mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                <PenTool size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Creators & Writers</h3>
+              <p className="text-white/60 leading-relaxed">Storyboard intricate narratives, establish world-building rules, and outline vast character relationship trees without hitting a creative wall.</p>
             </motion.div>
           </div>
         </section>
