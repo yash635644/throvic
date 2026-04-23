@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowRight, Brain, Zap, GitBranch, MessageSquare, ChevronDown, GraduationCap, Microscope, PenTool } from 'lucide-react';
+import { Menu, X, ArrowRight, Brain, Zap, GitBranch, MessageSquare, ChevronDown, GraduationCap, Microscope, PenTool, Check } from 'lucide-react';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -22,6 +22,32 @@ export default function LandingPage() {
   }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mzdyypdp', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
 
   const navigateToExplore = () => {
     setIsEntering(true);
@@ -359,44 +385,63 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold text-white mb-4 font-display">Help Shape Throvic</h2>
             <p className="text-white/60 mb-8">We are actively testing the beta. If the graph breaks or you have a feature idea, let us know directly!</p>
             
-            <form action="https://formspree.io/f/mzdyypdp" method="POST" className="flex flex-col gap-4 text-left relative z-10">
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">Your Name</label>
-                <input 
-                  type="text" 
-                  name="name" 
-                  required
-                  className="w-full bg-[#0d0d14]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#7F77DD]/50 focus:ring-1 focus:ring-[#7F77DD]/50 transition-all font-sans"
-                  placeholder="John Doe" 
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">Email Address</label>
-                <input 
-                  type="email" 
-                  name="email" 
-                  required
-                  className="w-full bg-[#0d0d14]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#7F77DD]/50 focus:ring-1 focus:ring-[#7F77DD]/50 transition-all font-sans"
-                  placeholder="john@example.com" 
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">Your Suggestion</label>
-                <textarea 
-                  name="message" 
-                  required
-                  rows={4}
-                  className="w-full bg-[#0d0d14]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#7F77DD]/50 focus:ring-1 focus:ring-[#7F77DD]/50 transition-all font-sans resize-none"
-                  placeholder="I would love to see..." 
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="w-full py-4 mt-2 rounded-xl bg-white text-[#0d0d14] font-bold text-lg hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            {status === 'success' ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }} 
+                animate={{ opacity: 1, scale: 1 }} 
+                className="bg-[#5DCAA5]/10 border border-[#5DCAA5]/20 p-8 rounded-2xl text-[#5DCAA5] relative z-10"
               >
-                Send Feedback
-              </button>
-            </form>
+                <div className="w-14 h-14 rounded-full bg-[#5DCAA5]/20 flex items-center justify-center mx-auto mb-4">
+                  <Check size={28} />
+                </div>
+                <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                <p className="text-[#5DCAA5]/80 mb-6 flex items-center justify-center">Thank you for your feedback. We read every single suggestion to shape the future of Throvic.</p>
+                <button onClick={() => setStatus('idle')} className="px-6 py-2 rounded-full border border-[#5DCAA5]/30 text-sm font-medium hover:bg-[#5DCAA5]/10 transition-colors">Submit another</button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left relative z-10">
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">Your Name</label>
+                  <input 
+                    type="text" 
+                    name="name" 
+                    required
+                    className="w-full bg-[#0d0d14]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#7F77DD]/50 focus:ring-1 focus:ring-[#7F77DD]/50 transition-all font-sans"
+                    placeholder="John Doe" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">Email Address</label>
+                  <input 
+                    type="email" 
+                    name="email" 
+                    required
+                    className="w-full bg-[#0d0d14]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#7F77DD]/50 focus:ring-1 focus:ring-[#7F77DD]/50 transition-all font-sans"
+                    placeholder="john@example.com" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-white/70 mb-2">Your Suggestion</label>
+                  <textarea 
+                    name="message" 
+                    required
+                    rows={4}
+                    className="w-full bg-[#0d0d14]/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#7F77DD]/50 focus:ring-1 focus:ring-[#7F77DD]/50 transition-all font-sans resize-none"
+                    placeholder="I would love to see..." 
+                  />
+                </div>
+                <button 
+                  type="submit" 
+                  disabled={status === 'loading'}
+                  className="w-full py-4 mt-2 rounded-xl bg-white text-[#0d0d14] font-bold text-lg hover:bg-white/90 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.2)] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? 'Sending...' : 'Send Feedback'}
+                </button>
+                {status === 'error' && (
+                  <p className="text-red-400 text-sm text-center mt-2 font-medium">Oops! Something went wrong. Please try again.</p>
+                )}
+              </form>
+            )}
           </motion.div>
         </section>
 
