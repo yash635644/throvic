@@ -359,8 +359,7 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold text-white mb-4 font-display">Help Shape Throvic</h2>
             <p className="text-white/60 mb-8">We are actively testing the beta. If the graph breaks or you have a feature idea, let us know directly!</p>
             
-            <form action="https://formspree.io/f/xvgzzeqq" method="POST" className="flex flex-col gap-4 text-left relative z-10">
-              {/* NOTE: User should replace the action URL with their actual formspree endpoint if needed, added placeholder endpoint */}
+            <form action="https://formspree.io/f/mzdyypdp" method="POST" className="flex flex-col gap-4 text-left relative z-10">
               <div>
                 <label className="block text-sm font-medium text-white/70 mb-2">Your Name</label>
                 <input 
