@@ -1,0 +1,57 @@
+{
+  "name": "throvic",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:pages": "node scripts/prepare-pages.mjs",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy && node scripts/prepare-pages.mjs && cd cloudflare-pages && wrangler pages deploy dist --project-name throvic --branch main --commit-dirty=true",
+    "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "indexnow": "node scripts/indexnow.mjs"
+  },
+  "dependencies": {
+    "d3-drag": "^3.0.0",
+    "d3-force": "^3.0.0",
+    "d3-quadtree": "^3.0.1",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
+    "d3-zoom": "^3.0.0",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.57.0",
+    "motion": "^14.2.0",
+    "next": "^16.3.8",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sonner": "^2.0.8"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.11",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/d3-drag": "^3.0.7",
+    "@types/d3-force": "^3.0.10",
+    "@types/d3-quadtree": "^3.0.6",
+    "@types/d3-selection": "^3.0.12",
+    "@types/d3-transition": "^3.0.9",
+    "@types/d3-zoom": "^3.0.9",
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.8",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.151.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "unrs-resolver@1.12.2": true,
+    "workerd@1.20261012.1": true,
+    "core-js": false
+  }
+}
