@@ -18,10 +18,9 @@
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "throvic-site" }],
 
   // Page cache, tag cache and the graph cache (src/lib/cache.ts) share one D1 database.
-  // Before the first deploy: `npx wrangler d1 create throvic-db` and paste its database_id here.
-  // Local dev and preview use a local copy, so the placeholder id works on this machine.
+  // Production database "throvic-db" (created with `npx wrangler d1 create throvic-db`). Local dev uses a local copy.
   "d1_databases": [
-    { "binding": "NEXT_TAG_CACHE_D1", "database_name": "throvic-db", "database_id": "00000000-0000-0000-0000-000000000000" }
+    { "binding": "NEXT_TAG_CACHE_D1", "database_name": "throvic-db", "database_id": "28dab4fe-dca5-46b9-959a-10c1b795cc3a" }
   ],
 
   // Secrets (GROQ_API_KEY) are set with `npx wrangler secret put GROQ_API_KEY`, never written here.
