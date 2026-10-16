@@ -41,7 +41,7 @@ function AudienceMenu() {
       </button>
       {open && (
           <div className="pop absolute left-1/2 top-full w-[440px] -translate-x-1/2 pt-2">
-            <ul className="grid grid-cols-2 gap-1 rounded-2xl border border-white/[0.09] bg-[#13131c]/95 p-2 shadow-float backdrop-blur-xl">
+            <ul className="grid grid-cols-2 gap-1 rounded-2xl border border-white/[0.09] bg-[#13131c]/[0.98] p-2 shadow-float backdrop-blur-xl">
               {AUDIENCES.map((a) => (
                 <li key={a.slug}>
                   <Link href={`/${a.slug}`} onClick={() => setOpen(false)} className="block rounded-xl p-3 transition hover:bg-white/[0.06]">
@@ -105,7 +105,7 @@ export function SiteHeader() {
       {open && (
           <nav
             aria-label="Mobile"
-            className="pop glass mx-auto mt-2 flex max-h-[calc(100dvh-90px)] max-w-7xl flex-col gap-1 overflow-y-auto rounded-2xl p-2 shadow-float md:hidden"
+            className="pop mx-auto border border-white/[0.09] bg-[#12121b]/[0.98] backdrop-blur-xl mt-2 flex max-h-[calc(100dvh-90px)] max-w-7xl flex-col gap-1 overflow-y-auto rounded-2xl p-2 shadow-float md:hidden"
           >
             {LINKS.map((l) => (
               <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-[16px] font-medium text-fg hover:bg-surface-hover">

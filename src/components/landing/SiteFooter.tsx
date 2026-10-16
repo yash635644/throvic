@@ -78,7 +78,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/[0.06]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-[13px] text-faint sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-2 px-5 py-6 text-center text-[13px] text-faint sm:flex-row sm:justify-between sm:px-6 sm:text-left">
           <p>© {new Date().getFullYear()} Throvic. Concept details from Wikipedia <span className="whitespace-nowrap">(CC BY-SA)</span>.</p>
           <p>
             Design &amp; developed by{" "}

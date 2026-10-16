@@ -94,22 +94,22 @@ function BranchVisual() {
 
 function ShareVisual() {
   return (
-    <div className="relative mx-auto h-[250px] max-w-[380px]">
+    <div className="relative mx-auto aspect-[380/250] w-full max-w-[380px]">
       {[
-        { w: 220, h: 116, x: 0, y: 30, r: -6, label: "Landscape" },
-        { w: 150, h: 150, x: 150, y: 0, r: 4, label: "Square" },
-        { w: 104, h: 184, x: 268, y: 54, r: 8, label: "Story" },
+        { w: 210, h: 112, x: 0, y: 44, r: -6, label: "Landscape" },
+        { w: 140, h: 140, x: 168, y: 4, r: 4, label: "Square" },
+        { w: 98, h: 174, x: 280, y: 60, r: 8, label: "Story" },
       ].map((c) => (
         <div
           key={c.label}
           className="absolute overflow-hidden rounded-2xl bg-[#11111a] shadow-float ring-1 ring-white/10"
-          style={{ width: c.w, height: c.h, left: c.x, top: c.y, transform: `rotate(${c.r}deg)` }}
+          style={{ width: `${(c.w / 380) * 100}%`, aspectRatio: `${c.w} / ${c.h}`, left: `${(c.x / 380) * 100}%`, top: `${(c.y / 250) * 100}%`, transform: `rotate(${c.r}deg)` }}
         >
           <div className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-purple/40 blur-2xl" />
           <div className="absolute -bottom-10 -right-6 h-28 w-28 rounded-full bg-teal/30 blur-2xl" />
           <span className="absolute left-3 top-3 text-[11px] font-extrabold text-white">Black hole</span>
           <span className="absolute bottom-3 left-3 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-bold text-white/80">{c.label}</span>
-          <svg viewBox="0 0 100 100" className="absolute right-2 top-1/2 h-1/2 -translate-y-1/2 opacity-90">
+          <svg viewBox="0 0 100 100" className={`absolute top-1/2 h-1/2 -translate-y-1/2 opacity-90 ${c.label === "Landscape" ? "left-[42%]" : "right-2"}`}>
             <path d="M50 50 L22 28 M50 50 L80 30 M50 50 L78 76 M50 50 L24 76" stroke="#afa9ec" strokeOpacity=".5" />
             <circle cx="50" cy="50" r="9" fill="#13131c" stroke="#5dcaa5" strokeWidth="3" />
             <circle cx="22" cy="28" r="5" fill="#7f77dd" />
@@ -156,7 +156,7 @@ export default function HomePage() {
 
         {/* How it works — timeline */}
         <section id="how-it-works" className="mx-auto max-w-7xl px-5 py-24 sm:px-6 sm:py-32">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <Reveal>
               <Eyebrow>How it works</Eyebrow>
               <H2>From one word to a map of ideas.</H2>
@@ -189,7 +189,7 @@ export default function HomePage() {
             </Reveal>
             <div className="mt-16 space-y-24 sm:mt-20 sm:space-y-28">
               {ROWS.map(({ eyebrow, title, text, Visual }, i) => (
-                <div key={title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+                <div key={title} className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
                   <Reveal className={i % 2 ? "lg:order-2" : ""}>
                     <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-teal">{eyebrow}</p>
                     <h3 className="mt-3 text-[26px] font-extrabold leading-[1.15] tracking-[-0.03em] text-white sm:text-[32px]">{title}</h3>
@@ -263,7 +263,7 @@ export default function HomePage() {
 
         {/* FAQ — two columns, lines */}
         <section id="faq" className="border-t border-white/[0.06]">
-          <div className="mx-auto grid max-w-7xl gap-10 px-5 py-24 sm:px-6 sm:py-32 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-24 sm:px-6 sm:py-32 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <Reveal className="lg:sticky lg:top-28 lg:self-start">
               <Eyebrow>FAQ</Eyebrow>
               <H2>Questions, answered.</H2>
@@ -292,7 +292,7 @@ export default function HomePage() {
 
         {/* Feedback — split */}
         <section id="feedback" className="border-t border-white/[0.06]">
-          <div className="mx-auto grid max-w-7xl gap-10 px-5 py-24 sm:px-6 sm:py-28 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-5 py-24 sm:px-6 sm:py-28 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <Reveal>
               <Eyebrow>Feedback</Eyebrow>
               <H2>Help shape Throvic.</H2>
