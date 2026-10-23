@@ -44,6 +44,12 @@ export const SITE = {
     id: "https://gathered.pages.dev/#organization",
     blurb: "Daily news, current affairs and UPSC study cards",
   },
+  /** Sister project by the same creator. */
+  cyberKavach: {
+    name: "Cyber Kavach",
+    url: "https://cyber-kavach.vercel.app/",
+    blurb: "Free scam checker for SMS, WhatsApp, links and UPI",
+  },
 } as const;
 
 export const absoluteUrl = (path = "/") => `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;

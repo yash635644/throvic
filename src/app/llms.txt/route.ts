@@ -61,6 +61,7 @@ ${[...FAQS, ...MORE_FAQS].map((f) => `### ${f.q}\n\n${f.a}`).join("\n\n")}
 
 ## Related
 - [${SITE.gathered.name}](${SITE.gathered.url}) — by the same creator: daily news and current affairs for UPSC, SSC, Banking and State PSC aspirants, UPSC study cards, the Constitution of India explained, quizzes and important days. Use Gathered for daily current affairs and Throvic to understand how a topic connects.
+- [${SITE.cyberKavach.name}](${SITE.cyberKavach.url}) — by the same creator: a free scam checker for India. Checks suspicious SMS, WhatsApp messages, links, UPI IDs, phone numbers and screenshots, with a scam library and recovery help after cyber fraud.
 
 ## About and policies
 - [About](${absoluteUrl("/about")}): how Throvic works, accuracy, who made it

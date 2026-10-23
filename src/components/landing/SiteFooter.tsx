@@ -66,14 +66,16 @@ export function SiteFooter() {
         <div className="col-span-2 sm:col-span-3 lg:col-span-1">
           <h2 className="eyebrow">More from the creator</h2>
           <ul className="mt-4 space-y-3.5 text-[14px]">
-            <li>
-              <a href={SITE.gathered.url} target="_blank" rel="noopener" className="group block">
-                <span className="inline-flex items-center gap-1 font-semibold text-white">
-                  {SITE.gathered.name} <ArrowUpRight className="h-3.5 w-3.5 text-faint transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal" />
-                </span>
-                <span className="block text-muted">{SITE.gathered.blurb}</span>
-              </a>
-            </li>
+            {[SITE.gathered, SITE.cyberKavach].map((p) => (
+              <li key={p.url}>
+                <a href={p.url} target="_blank" rel="noopener" className="group block">
+                  <span className="inline-flex items-center gap-1 font-semibold text-white">
+                    {p.name} <ArrowUpRight className="h-3.5 w-3.5 text-faint transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal" />
+                  </span>
+                  <span className="block text-muted">{p.blurb}</span>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
